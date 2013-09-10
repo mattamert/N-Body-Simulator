@@ -5,6 +5,8 @@
 #include "Simulation.h"
 #include "Body.h"
 
+#include <iostream>
+
 void updateFPS(sf::Time &elapsed, sf::Text &text, sf::RenderWindow &window);
 
 int _tmain(int argc, _TCHAR* argv[])
@@ -18,7 +20,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	sf::Font font;
 	if(!font.loadFromFile("Resources/sansation.ttf"))
 	{
-		window.setTitle("Failed to load text");
+		std::cout << "Failed to load text format.";
 	}
 
 	sf::Text text;
