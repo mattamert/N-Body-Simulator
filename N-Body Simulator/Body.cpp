@@ -10,7 +10,7 @@ Body::Body(double givenMass, double givenXPosition, double givenYPosition, doubl
 	xVelocity(givenXVelocity), yVelocity(givenYVelocity),
 	xAccel(0), yAccel(0)
 {
-	//initializes the sfml circle  (cannot be down in init list)
+	//initializes the sfml circle  (cannot be done in init list)
 	circle.setRadius(radius);
 	circle.setOrigin(radius, radius);
 	circle.setFillColor(sf::Color::Magenta);
