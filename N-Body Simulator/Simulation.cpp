@@ -23,6 +23,9 @@ Simulation::~Simulation(void)
 
 void Simulation::eventHandler(sf::RenderWindow &window)
 {
+	// Mouse being held down -- Creates a new planet, but the direction and magnitude of its initial velocity has not yet been
+	// input from the user.  On mouse release, the initial velocity is set and the planet is updated with the rest.
+
 	if(sf::Mouse::isButtonPressed(sf::Mouse::Left))		//Since there is no function for button released, we must create our own.
 	{
 		if(!mouseHeldDown)		//code that is executed when the button is first pressed
@@ -63,11 +66,13 @@ void Simulation::eventHandler(sf::RenderWindow &window)
 		}
 	}
 
+	//increases the mass of the new planet if the up arrow is pressed
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
 		tempPlanetMass += 25;
 	}
 
+	//decreases the mass of the new planet if the down arrow is pressed
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
 		if(tempPlanetMass > 25)
@@ -130,6 +135,8 @@ void Simulation::collisionResolution()
 	}
 }
 
+
+//Adds up all forces from all other bodies.
 void Simulation::sumForces(double gravConst)
 {
 	for(Body &c : planetList)
@@ -142,6 +149,7 @@ void Simulation::sumForces(double gravConst)
 	}
 }
 
+//Updates position and velocity from the new acceleration value, and sets up the acceleration value for the next iteration
 void Simulation::update(sf::Time &elapsed)
 {
 	for(Body &c : planetList)
